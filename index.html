@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 2 (Buttons)</title>
+    </head>
+    
+      <style>
+        body
+        {
+            margin: 0;
+        }
+          
+        #Background
+        {
+            background-color: firebrick;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            text-align: center;
+        }
+          
+        #Input-Box
+        {
+            
+            width:350px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            
+        }
+          
+        #Create-Button
+        {
+            width:100px;
+            height: 100px;
+            position: fixed;
+            border-radius: 10px 10px 10px 10px;
+            background-color: white;
+        }
+          
+        #Clear-Button
+        {
+            width:100px;
+            height: 100px;
+            top: 10px;
+            right: 10px;
+            position: fixed;
+            border-radius: 10px 10px 10px 10px;
+            background-color: white;
+        }
+          
+        #Obj-Container
+        {
+            margin-top: 200px;
+            margin-right: auto;
+            margin-bottom: 0;
+            margin-left: 35%;
+            background-color: rgba(40, 149, 235, 0.5);
+            width: 600px;
+            height:auto;
+            position: absolute;
+        }
+          
+        .input
+        {
+            margin-left: 120px;
+            margin-bottom: 15px;
+        }
+          
+        .images
+        {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            display: inline-block;
+        }
+          
+        .StatusBox
+        {
+            bottom: -50px;
+            left: 0;
+            width: 100vw;
+            height: 50px;
+            background-color: rgba(173, 216, 230, 0.8);
+            text-align: center;
+            position: fixed;
+            transition: bottom 1s;
+            
+        }
+          
+    </style>
+    <body>
+     <div id = "Background">
+         <h6>This was made with 1080p display</h6>
+     </div>
+     
+      <div id = "Input-Box">
+       <button id = "Create-Button">Create!</button>
+       <div>
+       <input type="text" placeholder="Enter Title Here" id = "title-input" class = "input"/>
+       </div>
+       <div>
+       <input type="text" placeholder="Enter Description Here" id = "description-input" class = "input"/>
+       </div>
+       <div>
+       <input type="text" placeholder="Enter Image URL Here" id = "image-input" class = "input"/>
+        </div>
+      </div>
+      <button id = "Clear-Button">Clear!</button>
+      <div id = "Obj-Container"></div>
+        <div id = "Obj-Created" class = "StatusBox">Created Item!</div>
+      <div id = "Obj-Cleared" class = "StatusBox">Cleared Items!</div>
+        <script>
+            var createBut = document.getElementById("Create-Button");
+            var clearBut = document.getElementById("Clear-Button");
+            var input_title = document.getElementById("title-input");
+            var input_description = document.getElementById("description-input");
+            var img_url = document.getElementById("image-input");
+            var new_display = document.getElementById("Obj-Container");
+            var status_box1 = document.getElementById("Obj-Created");
+            var status_box2 = document.getElementById("Obj-Cleared");
+         
+            createBut.onclick = function() {
+                var newObj = document.createElement("div");
+                new_display.appendChild(newObj);
+                newObj.style.width = "80%";
+                newObj.style.height = "200px";
+                newObj.style.backgroundColor = "orange";
+                newObj.style.margin = "15px", "60px", "15px";
+                newObj.style.marginLeft = "50px";
+                newObj.style.paddingTop = "20px";
+                newObj.style.paddingLeft = "15px";
+                newObj.style.paddingRight = "15px";
+                newObj.style.borderRadius = "5px 5px 5px 5px";
+                newObj.style.paddingBottom = "40px";
+                //////This created the new div when you click create
+                
+                var Title = document.createElement("div");
+                newObj.appendChild(Title);
+                Title.style.width = "35%";
+                Title.style.height = "40px";
+                Title.style.backgroundColor = "#652";
+                Title.style.marginLeft = "40%"
+                Title.style.position = "absolute";
+                Title.style.textAlign = "center";
+                Title.style.paddingBottom = "10px";
+                Title.style.display = "inline-block";
+                Title.style.borderRadius = "5px 5px 5px 5px";
+                Title.innerHTML = "<h2>" + input_title.value + "</h2>";
+                ///////This Makes the Title in the newly crated div
+                
+                
+                var Descript = document.createElement("div");
+                newObj.appendChild(Descript);
+                Descript.style.backgroundColor = "#fc3";
+                Descript.style.width = "35%";
+                Descript.style.height = "auto";
+                Descript.style.marginLeft = "40%";
+                Descript.style.marginTop = "12%";
+                Descript.style.display = "inline-block";
+                Descript.style.borderRadius = "5px 5px 5px 5px";
+                Descript.style.position = "absolute";
+                Descript.innerHTML = input_description.value;
+                //////This is for the Description for the new div
+                
+                var image = document.createElement("img");
+                image.src = img_url.value;
+                image.className = "images";
+                newObj.appendChild(image);
+                image.style.borderRadius = "5px 5px 5px 5px";
+                //////The image stuff for the Description for the new div
+                
+                status_box1.style.bottom = "0px";
+                status_box2.style.bottom = "-50px";
+                
+            }
+            
+            clearBut.onclick = function()  {
+                new_display.innerHTML = "";
+                status_box2.style.bottom = "0px";
+                status_box1.style.bottom = "-50px";
+            }
+        </script>
+    </body>
+    
+</html>
